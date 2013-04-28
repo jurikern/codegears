@@ -1,0 +1,6 @@
+.idea/*
+*.gem
+*.rbc
+.bundle
+.config
+Gemfile.lock
