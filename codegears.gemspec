@@ -20,4 +20,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rails"
   gem.add_dependency "jquery-rails"
   gem.add_dependency "httparty"
+  gem.add_dependency "colorize"
 end
