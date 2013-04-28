@@ -1,21 +1,24 @@
 # coding: utf-8
-$:.push File.expand_path("../lib", __FILE__)
+lib = File.expand_path('../lib/', __FILE__)
+$:.unshift lib unless $:.include?(lib)
 
 require "cg/version"
 
-Gem::Specification.new do |s|
-  s.name          = "codegears"
-  s.version       = CG::VERSION
-  s.authors       = ["Juri Semjonov"]
-  s.email         = ["js@codegears.co"]
-  s.description   = %q{CodeGears platform for Rails}
-  s.summary       = %q{CodeGears platform for Rails}
-  s.homepage      = "https://github.com/Semjonow/codegears"
-  s.license       = "MIT"
+Gem::Specification.new do |gem|
+  gem.name               = "codegears"
+  gem.version            = CG::VERSION
+  gem.authors            = ["Juri Semjonov"]
+  gem.email              = ["js@codegears.co"]
+  gem.description        = %q{Client library and CLI to manage apps on CodeGears}
+  gem.summary            = %q{Client library and command-line tool to manage apps on CodeGears}
+  gem.homepage           = "https://github.com/Semjonow/codegears"
+  gem.license            = "MIT"
+  gem.executables        = ["cg"]
+  gem.default_executable = "cg"
 
-  s.files = Dir["{lib}/**/*"] + ["LICENSE", "Rakefile", "README.md"]
+  gem.files = %x{ git ls-files }.split("\n").select { |d| d =~ %r{^(LICENSE|README|bin/|lib/|)} }
 
-  s.add_dependency "rails"
-  s.add_dependency "jquery-rails"
-  s.add_dependency "httparty"
+  gem.add_dependency "rails"
+  gem.add_dependency "jquery-rails"
+  gem.add_dependency "httparty"
 end
