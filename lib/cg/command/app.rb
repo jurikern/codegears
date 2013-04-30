@@ -22,7 +22,7 @@ module Command
       end
     end
 
-    def self.main(id = "")
+    def self.status(id = "")
       puts "Application ID can't be blank".red and return if id.blank?
       response = CG::API.show_app_request(id)
       if response["success"] == false
