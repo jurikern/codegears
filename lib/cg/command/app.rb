@@ -5,7 +5,7 @@ module Command
   class App
     include HTTParty
 
-    URL = "http://codegears.co/apps"
+    URL = "http://localhost:3000/apps"
 
     def self.create!(email = "")
       response = self.post(URL, :body => { :application => { :email => email } })
