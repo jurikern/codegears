@@ -19,7 +19,7 @@ module Cg
 
       def init_settings
         unless email.blank?
-          response = CG::API.create_request(email)
+          response = CG::API.create_app_request(email)
           unless response["success"] == false
             @id           = response["id"]
             @secret_id    = response["secret_id"]
