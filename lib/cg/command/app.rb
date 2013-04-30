@@ -23,7 +23,6 @@ module Command
     end
 
     def self.status(id = "")
-      puts "Application ID can't be blank".red and return unless id.present?
       response = CG::API.show_app_request(id)
       if response["success"] == false
         puts "Application not found".red
