@@ -1,4 +1,5 @@
 require "cg/api"
+require "colorize"
 
 module Cg
   module Generators
@@ -11,6 +12,7 @@ module Cg
       def create_config_file
         init_settings
         template "config.rb.template", "config/initializers/codegears.rb"
+        puts "Restart application to start using the CodeGears platform.".green
       end
 
       private

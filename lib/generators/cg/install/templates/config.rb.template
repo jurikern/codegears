@@ -1,3 +1,5 @@
+require "cg"
+
 CG::APP.configure do |instance|
   instance.id           = "<%= @id %>"
   instance.secret_id    = "<%= @secret_id %>"
