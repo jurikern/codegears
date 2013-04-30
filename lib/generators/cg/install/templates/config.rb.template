@@ -1,0 +1,5 @@
+CG::APP.configure do |instance|
+  instance.id           = "<%= @id %>"
+  instance.secret_id    = "<%= @secret_id %>"
+  instance.secret_token = "<%= @secret_token %>"
+end
