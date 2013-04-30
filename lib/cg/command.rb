@@ -1,3 +1,5 @@
+require "cg/command/version"
+
 module CG
   class Command
     def initialize(*args)
@@ -9,7 +11,15 @@ module CG
       namespace = Kernel.const_get("Command").const_get(namespace) rescue nil
       task      = args.shift.downcase rescue nil
 
-      namespace.send(task, *args)
+      if namespace
+        if task
+          namespace.send(task, *args)
+        else
+          namespace.send("main", *args)
+        end
+      else
+        Command::Version.main
+      end
     end
   end
 end
