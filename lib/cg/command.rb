@@ -1,4 +1,4 @@
-require "cg/command/version"
+require "cg/version"
 
 module CG
   class Command
@@ -18,7 +18,7 @@ module CG
           namespace.send("main", *args)
         end
       else
-        Command::Version.main
+        puts CG::VERSION
       end
     end
   end
