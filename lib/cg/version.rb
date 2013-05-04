@@ -1,3 +1,3 @@
 module CG
-  VERSION = "0.0.20.pre"
+  VERSION = "0.0.21.pre"
 end

@@ -11,6 +11,10 @@ module CG
       yield(self.instance)
     end
 
+    def self.id
+      self.instance.id
+    end
+
     def self.secret_id
       self.instance.secret_id
     end
@@ -56,6 +60,12 @@ module CG
       instance.message = message
 
       instance.response = CG::API.push_message_request(instance.channel, instance.message)
+    end
+
+    def self.stats
+      instance = self.instance
+
+      CG::API.show_app_request(instance.id, instance.secret_id, instance.secret_token)
     end
 
     def channel=(ch)

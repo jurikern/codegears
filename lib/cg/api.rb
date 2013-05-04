@@ -10,8 +10,8 @@ module CG
       self.post("#{ROOT_URL}/apps", :body => { :application => { :email => email } })
     end
 
-    def self.show_app_request(id)
-      self.get("#{ROOT_URL}/apps/#{id}")
+    def self.show_app_request(id, secret_id = nil, secret_token = nil)
+      self.get("#{ROOT_URL}/apps/#{id}?#{self.attach_auth(secret_id, secret_token)}")
     end
 
     def self.push_message_request(channel, message)
@@ -19,6 +19,14 @@ module CG
                   :message => message,
                   :ext => { :secret_id => CG::APP.secret_id, :secret_token => CG::APP.secret_token } }.to_json
       Net::HTTP.post_form(URI.parse(PUSHER_URL), :message => message)
+    end
+
+    def self.attach_auth(secret_id, secret_token)
+      if secret_id && secret_token
+        "secret_id=#{secret_id}&secret_token=#{secret_token}"
+      else
+        ""
+      end
     end
   end
 end
