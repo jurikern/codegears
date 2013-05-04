@@ -21,9 +21,9 @@ module Cg
         unless email.blank?
           response = CG::API.create_app_request(email)
           unless response["success"] == false
-            @id           = response["id"]
-            @secret_id    = response["secret_id"]
-            @secret_token = response["secret_token"]
+            @id           = response['id']
+            @secret_id    = response['secret_id']
+            @secret_token = response['secret_token']
           end
         end
       end
