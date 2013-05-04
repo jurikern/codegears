@@ -4,7 +4,7 @@ module CG
   class API
     include HTTParty
     ROOT_URL   = "http://api.codegears.co"
-    PUSHER_URL = "#{ROOT_URL}/stream"
+    PUSHER_URL = "#{ROOT_URL}:9292/stream"
 
     def self.create_app_request(email)
       self.post("#{ROOT_URL}/apps", :body => { :application => { :email => email } })
