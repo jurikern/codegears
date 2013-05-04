@@ -3,8 +3,8 @@ require "httparty"
 module CG
   class API
     include HTTParty
-    ROOT_URL   = "http://codegears.co"
-    PUSHER_URL = "http://codegears.co:9292/stream"
+    ROOT_URL   = "http://api.codegears.co"
+    PUSHER_URL = "#{ROOT_URL}/stream"
 
     def self.create_app_request(email)
       self.post("#{ROOT_URL}/apps", :body => { :application => { :email => email } })
