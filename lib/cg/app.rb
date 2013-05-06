@@ -44,20 +44,11 @@ module CG
       self.instance.response
     end
 
-    def self.push(channel)
-      instance = self.instance
-
-      instance.channel = channel
-      instance.message = yield
-
-      instance.response = CG::API.push_message_request(instance.channel, instance.message)
-    end
-
-    def self.push(channel, message)
+    def self.push(channel, message = nil)
       instance = self.instance
 
       instance.channel = instance.perform(channel)
-      instance.message = message
+      instance.message = message || yield
 
       instance.response = CG::API.push_message_request(instance.channel, instance.message)
     end
